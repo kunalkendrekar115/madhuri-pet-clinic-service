@@ -1,0 +1,72 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "address",
+    "reference",
+    "treatment",
+    "fees",
+    "paidAmount",
+    "date"
+  ],
+  "properties": {
+    "ownerName": {
+      "type": "string",
+      "default": "-"
+    },
+    "address": {
+      "type": "string"
+    },
+    "mobileNumber": {
+      "type": "number"
+    },
+    "petName": {
+      "type": "string"
+    },
+    "petNameType": {
+      "type": "string"
+    },
+    "history": {
+      "type": "string"
+    },
+    "treatment": {
+      "type": "string",
+      "enum": [
+        "General Checkup",
+        "Consultancy",
+        "Vaccination",
+        "Deworming",
+        "Other"
+      ]
+    },
+    "treatmentDescription": {
+      "type": "string"
+    },
+    "fees": {
+      "type": "number"
+    },
+    "paidAmount": {
+      "type": "number",
+      "default": 0
+    },
+    "species": {
+      "type": "string"
+    },
+    "breed": {
+      "type": "string"
+    },
+    "remainingAmount": { "type": "number", "default": 0 },
+    "date": { "type": "string" },
+    "followupDate": {
+      "type": "string",
+      "default": "-"
+    },
+    "reference": {
+      "type": "string",
+      "default": "MaxSophie",
+      "enum": ["MaxSophie", "Self"]
+    }
+  }
+}

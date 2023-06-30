@@ -1,0 +1,31 @@
+{
+  "devDependencies": {
+    "aws-sdk": "^2.1282.0",
+    "esbuild": "^0.14.25",
+    "serverless-bundle": "^6.0.0",
+    "serverless-esbuild": "^1.25.0",
+    "serverless-offline": "^12.0.3",
+    "serverless-plugin-chrome": "^1.0.0-55.3",
+    "serverless-plugin-typescript": "^2.1.4",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.363.0",
+    "@aws-sdk/lib-dynamodb": "^3.363.0",
+    "jsonwebtoken": "^9.0.0",
+    "puppeteer-core": "^18.0.5",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-aws-documentation": "^1.1.0",
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-reqvalidator-plugin": "^2.0.0",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "start": "serverless offline --stage dev",
+    "deploy:prod": "serverless deploy --stage prod",
+    "deploy:dev": "serverless deploy --stage dev"
+  },
+  "browser": {
+    "vertx": false
+  }
+}

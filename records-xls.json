@@ -1,0 +1,438 @@
+[
+  {
+    "date": "29/09/2022",
+    "petNameType": "Oxy Dog",
+    "ownerName": "amruta roy land breeze society punawale",
+    "history": "fungal and bacterial skin infection itching",
+    "treatmentDescription": "inj doxy 300 mg s/c,inj predni o.5 ml s/c,shampoo kitochlor, wocazole lotion",
+    "fees": 1140,
+    "reference": "Self"
+  },
+  {
+    "date": "06/10/2022",
+    "petNameType": "cat",
+    "ownerName": "ravet",
+    "history": "eye infection cunjunctivitis ?, red spot on eye ball , swollen , eye leed",
+    "treatmentDescription": "eyesafe eye drop 2 drop twice a day",
+    "fees": 400,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "06/10/2022",
+    "petNameType": "Oxy Dog",
+    "ownerName": "Amruta Roy, Ravet",
+    "history": "Improvements seen",
+    "treatmentDescription": "Tab K-Pet 200mg",
+    "fees": 500,
+    "reference": "Self"
+  },
+  {
+    "date": "08/10/2022",
+    "petNameType": "Dog",
+    "ownerName": "",
+    "history": "",
+    "treatmentDescription": "deworming tab",
+    "fees": 300,
+    "reference": ""
+  },
+  {
+    "date": "08/10/2022",
+    "petNameType": "Cat",
+    "ownerName": "Ravet",
+    "history": "Improvment seen",
+    "treatmentDescription": "-",
+    "fees": 200,
+    "reference": "Self"
+  },
+  {
+    "date": "10/10/2022",
+    "petNameType": "Bella (Female Dog)",
+    "ownerName": "Sigmerry , H103, Queenstown Akurdi",
+    "history": "8 year old, Puss from vagina since 2 day's",
+    "treatmentDescription": "Inj Ceftaz 500mg s/c,\nTab bioclan 150mg ,BID twice a day",
+    "fees": 500,
+    "reference": "Self"
+  },
+  {
+    "date": "11/10/2022",
+    "petNameType": "Coco (Female dog)",
+    "ownerName": "-",
+    "history": "5 years old, fungal skin infection, iteching,dermatitis?",
+    "treatmentDescription": "Inj enro 1.5ml, inj predni 0.5ml, tab K-Pet 200mg, Tab Bio 150mg, Kittoclor shampoo, wocazole lotion",
+    "fees": 1180,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "14/10/2022",
+    "petNameType": "archi F 15 yrs",
+    "ownerName": "GK Silverland nalawade f 103",
+    "history": "RT 101",
+    "treatmentDescription": "inj dns 500 ml inj tribivet 1.5 ml inj enro 1.5 ml, inj rantac 1ml, inj ondem 1ml",
+    "fees": 600,
+    "reference": "self"
+  },
+  {
+    "date": "17/10/2022",
+    "petNameType": "Dog",
+    "ownerName": "Vision Indramegh, Punawale",
+    "history": "Health Certificate",
+    "treatmentDescription": "deworming tab",
+    "fees": 300,
+    "reference": "Self"
+  },
+  {
+    "date": "29/10/2022",
+    "petNameType": "Dog (Sahebrao)",
+    "ownerName": "Ravet",
+    "history": "Calcium deficiency, hind legs, bend",
+    "treatmentDescription": "Calcium Tablets",
+    "fees": 200,
+    "Followaps": "10 days",
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "30/10/2022",
+    "petNameType": "Love birds",
+    "ownerName": "Ravet",
+    "history": "loose motions, swelling at neck, dull & dipress",
+    "treatmentDescription": "Proviboost drops",
+    "fees": 400,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "30/10/2022",
+    "petNameType": "Lasapso Dog",
+    "ownerName": "Karnik, Akurdi",
+    "history": "Dog bite wound",
+    "treatmentDescription": "ARV, Clined, dressed, melonex drop, scavon, pendistrine",
+    "fees": 840,
+    "Followaps": "2 days",
+    "reference": "Self"
+  },
+  {
+    "date": "30/10/2022",
+    "petNameType": "Puppy , golden retriver",
+    "ownerName": "Ravet",
+    "history": "Vaccination 1st",
+    "treatmentDescription": "9InOne, Neil cutting, cunsultancy",
+    "fees": 1300,
+    "Followaps": "21 days",
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "31/10/2022",
+    "petNameType": "Araya , Golden Retriver",
+    "ownerName": "Kale, Ravet",
+    "history": "Fungal infection",
+    "treatmentDescription": "Inj Predni+conci+enro. Shampoo Kitokonazole",
+    "fees": 780,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "31/10/2022",
+    "petNameType": "Dog",
+    "ownerName": "Malandkar , Akurdi",
+    "history": "Allergic dermatities",
+    "treatmentDescription": "Inj Predni+conci+enro. Shampoo Kitoclore, Vocazol lotion, KPet tab, Bioclane tab",
+    "fees": 1342,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "03/11/2022",
+    "petNameType": "luci american buli f 2.5 yrs",
+    "ownerName": "sandeep adsule gahunje",
+    "history": "yellowish pigmentation eye ear jaw all over body  RT99.5 f,",
+    "treatmentDescription": "inj conci 3 ml inj enro 3 ml inj rantac 2 ml s/c inj DNS500 ml i/v",
+    "fees": 1000,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "03/11/2022",
+    "petNameType": "lab 10 yrs F Ira",
+    "ownerName": "celestial city",
+    "history": "cunvulsions hypersalivation restless RT102",
+    "treatmentDescription": "inj enro inj conci inj dexa tab gardinal 60 mg",
+    "fees": 650,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "03/11/2022",
+    "petNameType": "Lasapso Dog",
+    "ownerName": "Karnik, Akurdi",
+    "history": "follwup",
+    "treatmentDescription": "inj ARV",
+    "fees": 400,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "04/11/2022",
+    "petNameType": "IRA F 10 yrs",
+    "ownerName": "celestial city",
+    "history": "convulsions at 6 am restless breathing     fast",
+    "treatmentDescription": "inj meco 1ml inj dexa 0.5 ml inj enro 3ml",
+    "fees": 2300,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "06/11/2022",
+    "petNameType": "Cat",
+    "ownerName": "Ravet",
+    "history": "Tick infection",
+    "treatmentDescription": "spoton, kitoclore shampoo",
+    "fees": 677,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "06/11/2022",
+    "petNameType": "Dog Ira",
+    "ownerName": "Ravet",
+    "history": "Infection at teat",
+    "treatmentDescription": "Inj AMox 300mg, Scavon , Kiskin,  Bioclone tab",
+    "fees": 1300,
+    "reference": "Self"
+  },
+  {
+    "date": "12/11/2022",
+    "petNameType": "Poppy Dog Golden Retriver",
+    "ownerName": "Ravet",
+    "history": "Ear clining, Dewormng",
+    "treatmentDescription": "Tab Drontal",
+    "fees": 300,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "12/11/2022",
+    "petNameType": "Dog Sonia",
+    "ownerName": "Sandip Adsul, Gahunje",
+    "history": "Projesterone test",
+    "treatmentDescription": "",
+    "fees": 700,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "12/11/2022",
+    "petNameType": "Kitten",
+    "ownerName": "-",
+    "history": "-",
+    "treatmentDescription": "Deworming",
+    "fees": 130,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "13/11/2022",
+    "petNameType": "Kitten",
+    "ownerName": "Akurdi",
+    "history": "Easteres Period",
+    "treatmentDescription": "Consultancy",
+    "fees": 200,
+    "reference": "Self"
+  },
+  {
+    "date": "13/11/2022",
+    "petNameType": "shadow lab 12 yrs",
+    "ownerName": "ravet",
+    "history": "mammary tumor septic bleeding",
+    "treatmentDescription": "inj predni 2 ml ink otc 3 ml scavon pendistrine tab amox 250 mg",
+    "fees": 550,
+    "reference": "Self"
+  },
+  {
+    "date": "14/11/2022",
+    "petNameType": "kitty",
+    "ownerName": "akurdi",
+    "history": "vaccination anual",
+    "treatmentDescription": "inj tricat and rabies",
+    "fees": 2000,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "14/11/2022",
+    "petNameType": "max sheru and sophe",
+    "ownerName": "akurdi",
+    "history": "anual vaccination",
+    "treatmentDescription": "inj RL",
+    "fees": 3000,
+    "reference": "Maxsophie",
+    "": "Payment Pending"
+  },
+  {
+    "date": "14/11/2022",
+    "petNameType": "Strey Dog",
+    "ownerName": "Mukai Chowk ,Ravet",
+    "history": "Temp 103, Injury to leg",
+    "treatmentDescription": "Inj OTC, Tab metaplane, Tab Bioclane, Ointment Skevon",
+    "fees": 773,
+    "reference": "Self"
+  },
+  {
+    "date": "15/11/2022",
+    "petNameType": "scizoo puppy",
+    "ownerName": "ravet",
+    "history": "first vaccine",
+    "treatmentDescription": ", immunol , proviboost",
+    "fees": 1000,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "16/11/2022",
+    "petNameType": "kubra cat percian",
+    "ownerName": "ravet",
+    "history": "tick and flea rx",
+    "treatmentDescription": "spot on",
+    "fees": 300,
+    "reference": "Maxsophie"
+  },
+  {
+    "date": "17/11/2022",
+    "petNameType": "chicku pom",
+    "ownerName": "punawale",
+    "history": "cunsulting and vaccination",
+    "treatmentDescription": "inj 7 in one",
+    "fees": 900,
+    "reference": "Self"
+  },
+  {
+    "date": "23/11/2022",
+    "petNameType": "cat manu",
+    "ownerName": "-",
+    "history": "tricat vaccine",
+    "treatmentDescription": "tricat",
+    "fees": 999,
+    "reference": ""
+  },
+  {
+    "date": "24/11/2022",
+    "petNameType": "max lab puppy 1 month",
+    "ownerName": "Mukai Chowk ,Ravet",
+    "history": "cunsulting",
+    "treatmentDescription": "extick powdwer",
+    "fees": 400,
+    "reference": ""
+  },
+  {
+    "date": "25/11/2022",
+    "petNameType": "lab 8 months ravet",
+    "ownerName": "ravet",
+    "history": "tick infection , limping from left leg",
+    "treatmentDescription": "deworming tab 3",
+    "fees": 1139,
+    "reference": ""
+  },
+  {
+    "date": "27/11 /22",
+    "petNameType": "turtle",
+    "ownerName": "ravet",
+    "history": "declered dead",
+    "treatmentDescription": "",
+    "fees": 100,
+    "reference": ""
+  },
+  {
+    "date": "27/11/2022",
+    "petNameType": "cat percian 4 month and 2 month",
+    "ownerName": "-",
+    "history": "vaccination",
+    "treatmentDescription": "tricat and arv",
+    "fees": 1300,
+    "reference": ""
+  },
+  {
+    "date": "27/11/2022",
+    "petNameType": "Poppy Dog Golden Retriver",
+    "ownerName": "ravet",
+    "history": "vaccination and nail cutting",
+    "treatmentDescription": "corona and 7 in one",
+    "fees": 1800,
+    "reference": ""
+  },
+  {
+    "date": "30/11/2022",
+    "petNameType": "scizoo puppy",
+    "ownerName": "ravet k ville",
+    "history": "deworming",
+    "treatmentDescription": "killworm",
+    "fees": 400,
+    "reference": ""
+  },
+  {
+    "date": "04/12/2022",
+    "petNameType": "sahebrao",
+    "ownerName": "ravet",
+    "history": "Dog bite wound",
+    "treatmentDescription": "ARV",
+    "fees": 470,
+    "reference": ""
+  },
+  {
+    "date": "04/12/2022",
+    "petNameType": "BEAGLE",
+    "ownerName": "-",
+    "history": "vaccination",
+    "treatmentDescription": "RL",
+    "fees": 1100,
+    "reference": ""
+  },
+  {
+    "date": "04/12/2022",
+    "petNameType": "kitten 2 month",
+    "ownerName": "ravet",
+    "history": "skin inf itching, temp 102.5",
+    "treatmentDescription": "inj melonex 0.2 ml, inj OTC 0.2 ml, spot on 3 drop",
+    "fees": 600,
+    "reference": ""
+  },
+  {
+    "date": "10/12/2022",
+    "petNameType": "max lab puppy 1 month",
+    "ownerName": "-",
+    "history": "vaccination",
+    "treatmentDescription": "inj 7 in one",
+    "fees": 700,
+    "reference": ""
+  },
+  {
+    "date": "13/12/2022",
+    "petNameType": "lasaosoo",
+    "ownerName": "k ville",
+    "history": "vaccination",
+    "treatmentDescription": "inj 9 in one and extick powder",
+    "fees": 1055,
+    "reference": ""
+  },
+  {
+    "date": "13/12/2022",
+    "petNameType": "chiku pom sharvari wingets punawale",
+    "ownerName": "punawale",
+    "history": "vaccination",
+    "treatmentDescription": "inj 9 in one",
+    "fees": 1000,
+    "reference": ""
+  },
+  {
+    "date": "17/12/2022",
+    "petNameType": "max lab 5 yrs male",
+    "ownerName": "ravet",
+    "history": "skin inf on testecles",
+    "treatmentDescription": "inj predni conci otc 2 ml s/cadvice pendistrine and scavon topically conazole shampoo",
+    "fees": 735,
+    "reference": ""
+  },
+  {
+    "date": "17/12/2022",
+    "petNameType": "leo lab female 2.5 yrs",
+    "ownerName": "punavale 18 latitude",
+    "history": "fungal bac skin inf itchung alopecia",
+    "treatmentDescription": "inj predni 1 ml inj concib 1 ml inj intacef 2 ml lozalo shampoo kiskin kpet toxmox ta",
+    "fees": 1400,
+    "reference": ""
+  },
+  {
+    "date": "18/12/2022",
+    "petNameType": "rc pet shop cat 6 month",
+    "ownerName": "pradhikaran",
+    "history": "rt 97 dehydration vomition",
+    "treatmentDescription": "inj conci inj amox inj ranrac inj dns",
+    "fees": 400,
+    "reference": ""
+  }
+]

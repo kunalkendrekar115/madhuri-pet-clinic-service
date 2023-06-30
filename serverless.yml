@@ -1,0 +1,179 @@
+service: madhuri-pet-clinic-service
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${env:stage, 'dev'}
+  cors: true
+  apiGateway:
+    apiKeys:
+      - madhuri-pet-clinic-api-key-${sls:stage}
+  environment:
+    DYNAMODB_RECORDS_TABLE: ${self:service}-${sls:stage}
+    DYNAMODB_EXPENDITURES_TABLE: ${self:service}-expenditure-${sls:stage}
+    DBENDPOINT: ${param:dbEndpoint,self:custom.DBURL}
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_RECORDS_TABLE}"
+            - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_EXPENDITURES_TABLE}"
+            - "arn:aws:dynamodb:us-east-1:453679252482:table/madhuri-pet-clinic-service-prod"
+
+params:
+  dev:
+    JWT_KEY: jwt-key-dev
+    PASSWORD: kunal
+  prod:
+    JWT_KEY: secure-jwt-key-prod
+    PASSWORD: kunalkmk
+externals: ["aws-sdk", "@sparticuz/chromium"]
+
+custom:
+  DBURL: https://${self:service}.${aws:region}.amazonaws.com}
+  dynamodb:
+    # If you only want to use DynamoDB Local in some stages, declare them here
+    stages: ${sls:stage}
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+  package:
+    individually: true
+
+functions:
+  custom-authorizer:
+    handler: src/tokenAuthorizer.tokenAuthorize
+    environment:
+      JWT_KEY: ${param:JWT_KEY}
+
+  tokenAuthorizer:
+    handler: src/tokenAuthorizer.authenticate
+    environment:
+      JWT_KEY: ${param:JWT_KEY}
+      PASSWORD: ${param:PASSWORD}
+    events:
+      - http:
+          path: /authenticate
+          method: post
+          cors: true
+          private: true
+
+  MadhuriPetService:
+    handler: src/MadhuriPetService.routes
+    environment:
+      REGION: ${aws:region}
+    events:
+      - http:
+          path: /records
+          cors: true
+          method: get
+          authorizer: custom-authorizer
+          private: true
+      - http:
+          path: /records
+          method: post
+          cors: true
+          authorizer: custom-authorizer
+          private: true
+          request:
+            schemas:
+              application/json:
+                schema: ${file(create_request.json)}
+                name: PostCreateModel
+                description: "Validation model for Creating Posts"
+      - http:
+          path: /expenditure
+          method: get
+          cors: true
+          authorizer: custom-authorizer
+      - http:
+          path: /expenditure
+          method: post
+          cors: true
+          authorizer: custom-authorizer
+      - http:
+          path: /records/db-migrate
+          method: post
+          authorizer: custom-authorizer
+          cors: true
+          private: true
+      - http:
+          path: /records
+          authorizer: custom-authorizer
+          method: patch
+          cors: true
+          private: true
+      - http:
+          path: /records
+          authorizer: custom-authorizer
+          method: delete
+          cors: true
+          private: true
+plugins:
+  - serverless-dynamodb-local
+  - serverless-esbuild
+  - serverless-offline
+resources:
+  Resources:
+    RecordTable:
+      Type: "AWS::DynamoDB::Table"
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: date
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: date
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_RECORDS_TABLE}
+
+    ExpenditureTable:
+      Type: "AWS::DynamoDB::Table"
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: date
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: date
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_EXPENDITURES_TABLE}
+
+    GatewayResponseDefault4XX:
+      Type: "AWS::ApiGateway::GatewayResponse"
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_4XX
+        RestApiId:
+          Ref: "ApiGatewayRestApi"
