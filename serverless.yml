@@ -12,6 +12,7 @@ provider:
   environment:
     DYNAMODB_RECORDS_TABLE: ${self:service}-${sls:stage}
     DYNAMODB_EXPENDITURES_TABLE: ${self:service}-expenditure-${sls:stage}
+    DYNAMODB_TREATMENTS_TABLE: ${self:service}-treatments-${sls:stage}
     DBENDPOINT: ${param:dbEndpoint,self:custom.DBURL}
 
   iam:
@@ -25,9 +26,11 @@ provider:
             - dynamodb:PutItem
             - dynamodb:UpdateItem
             - dynamodb:DeleteItem
+            - dynamodb:BatchGetItem
           Resource:
             - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_RECORDS_TABLE}"
             - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_EXPENDITURES_TABLE}"
+            - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TREATMENTS_TABLE}"
             - "arn:aws:dynamodb:us-east-1:453679252482:table/madhuri-pet-clinic-service-prod"
 
 params:
@@ -37,7 +40,6 @@ params:
   prod:
     JWT_KEY: secure-jwt-key-prod
     PASSWORD: kunalkmk
-externals: ["aws-sdk", "@sparticuz/chromium"]
 
 custom:
   DBURL: https://${self:service}.${aws:region}.amazonaws.com}
@@ -124,6 +126,24 @@ functions:
           method: delete
           cors: true
           private: true
+      - http:
+          path: /treatments
+          authorizer: custom-authorizer
+          method: get
+          cors: true
+          private: true
+      - http:
+          path: /treatments
+          authorizer: custom-authorizer
+          method: post
+          cors: true
+          private: true
+      - http:
+          path: /generate-prescription
+          authorizer: custom-authorizer
+          method: post
+          cors: true
+          private: true
 plugins:
   - serverless-dynamodb-local
   - serverless-esbuild
@@ -167,6 +187,25 @@ resources:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:provider.environment.DYNAMODB_EXPENDITURES_TABLE}
+
+    TreatmentsTable:
+      Type: "AWS::DynamoDB::Table"
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: type
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: type
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TREATMENTS_TABLE}
 
     GatewayResponseDefault4XX:
       Type: "AWS::ApiGateway::GatewayResponse"

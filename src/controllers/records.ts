@@ -6,7 +6,7 @@ import { DynamoDBDocumentClient, UpdateCommand, PutCommand, ScanCommand, DeleteC
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
-interface IRecord {
+export interface IRecord {
     ownerName: string,
     mobileNumber: number,
     petName: "string",

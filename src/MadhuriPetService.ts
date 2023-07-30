@@ -4,6 +4,8 @@ import { saveRecords, getRecords, updateRecord, deleteRecord } from "./controlle
 import { migrateDb } from "./controllers/db-migrate"
 import { saveExpenditure } from './controllers/save-expenditure';
 import { getExpenditure } from './controllers/get-expenditure';
+import { getAvlTreatments, putTreatment } from './controllers/available-treatments';
+import { generatePrescription } from "./controllers/generate-pdf-service";
 
 
 export function routes(event: any, context, callback: any) {
@@ -21,6 +23,8 @@ export function routes(event: any, context, callback: any) {
           return getRecords(event.queryStringParameters, callback)
         case "/expenditure":
           return getExpenditure(event.queryStringParameters, callback)
+        case "/treatments":
+          return getAvlTreatments(callback)
       }
     }
 
@@ -34,9 +38,10 @@ export function routes(event: any, context, callback: any) {
           return migrateDb(body, callback);
         case "/expenditure":
           return saveExpenditure(body, callback);
-
-        // case "/generate-pdf":
-        //   return generatePDF(body, callback);
+        case "/treatments":
+          return putTreatment(body, callback);
+        case "/generate-prescription":
+          return generatePrescription(body, callback);
       }
     }
 

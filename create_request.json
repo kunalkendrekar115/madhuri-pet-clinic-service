@@ -25,6 +25,9 @@
     "petName": {
       "type": "string"
     },
+    "gender": {
+      "type": "string"
+    },
     "petNameType": {
       "type": "string"
     },
@@ -32,14 +35,7 @@
       "type": "string"
     },
     "treatment": {
-      "type": "string",
-      "enum": [
-        "General Checkup",
-        "Consultancy",
-        "Vaccination",
-        "Deworming",
-        "Other"
-      ]
+      "type": "string"
     },
     "treatmentDescription": {
       "type": "string"

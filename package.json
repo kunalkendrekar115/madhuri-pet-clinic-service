@@ -12,8 +12,8 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.363.0",
     "@aws-sdk/lib-dynamodb": "^3.363.0",
+    "axios": "^1.4.0",
     "jsonwebtoken": "^9.0.0",
-    "puppeteer-core": "^18.0.5",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-aws-documentation": "^1.1.0",
     "serverless-dynamodb-local": "^0.2.40",
