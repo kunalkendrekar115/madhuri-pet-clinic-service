@@ -40,6 +40,9 @@
     "treatmentDescription": {
       "type": "string"
     },
+    "advice": {
+      "type": "string"
+    },
     "fees": {
       "type": "number"
     },

@@ -30,7 +30,9 @@ interface IQueryParams {
     from?: string,
     to?: string,
     reference?: string,
-    date?: string
+    date?: string,
+    searchQuery?: string,
+    cardRecords?: string
 }
 
 export function saveRecords(body: IRecord, callback: any) {
@@ -64,7 +66,7 @@ export function saveRecords(body: IRecord, callback: any) {
 
 export function getRecords(queryParams: IQueryParams, callback: any) {
 
-    console.log(process.env.DBENDPOINT)
+    console.log(queryParams)
 
     const params = new ScanCommand({
         TableName: process.env.DYNAMODB_RECORDS_TABLE,
@@ -90,6 +92,25 @@ export function getRecords(queryParams: IQueryParams, callback: any) {
             },
             ExpressionAttributeNames: { '#referBy': 'reference' },
             FilterExpression: "#referBy = :a"
+        }),
+        ...(queryParams?.searchQuery && {
+            ExpressionAttributeValues: {
+                ":a": !isNaN(queryParams.searchQuery.trim()) ? +queryParams.searchQuery.trim() : -1,
+                ":b": queryParams.searchQuery.trim()
+            },
+            ExpressionAttributeNames: { '#mobileNumber': 'mobileNumber', '#ownerName': 'ownerName' },
+            FilterExpression: "#mobileNumber=:a OR contains(#ownerName,:b)"
+        }),
+        ...((queryParams?.cardRecords) && {
+            ExpressionAttributeValues: {
+                ":a": +queryParams.cardRecords.split(',')[0].trim(),
+                ":b": queryParams.cardRecords.split(',')[1].trim(),
+                ":c": queryParams.cardRecords.split(',')[2].trim(),
+                ":d": 'Deworming',
+                ":e": 'Vaccination'
+            },
+            ExpressionAttributeNames: { '#mobileNumber': 'mobileNumber', '#ownerName': 'ownerName', '#petName': 'petName' },
+            FilterExpression: "#mobileNumber=:a AND #ownerName=:b AND #petName=:c AND ( contains(treatment, :d) OR contains(treatment, :e))"
         }),
     });
 
@@ -122,22 +143,28 @@ export function getRecords(queryParams: IQueryParams, callback: any) {
 
 export function updateRecord(queryParams: IQueryParams, body: IRecord, callback: any) {
 
+    let updateExpression = Object.keys(body).reduce((acc, item) => `${acc ? `${acc}, ${item}=:${item}` : `${item}=:${item}`}`, '')
+    updateExpression = `set ${updateExpression}`;
+
+    console.log(updateExpression);
+
+    let updateExpressionValues = Object.keys(body).reduce((acc, item) => ({ ...acc, [`:${item}`]: body[item] }), {})
+    console.log(updateExpressionValues);
+
     const params = new UpdateCommand({
         TableName: process.env.DYNAMODB_RECORDS_TABLE,
         Key: {
             id: queryParams.id,
             date: queryParams.date
         },
-        UpdateExpression: `set paidAmount=:paidAmount, remainingAmount=:remainingAmount `,
-        ExpressionAttributeValues: {
-            ":paidAmount": body.paidAmount,
-            ":remainingAmount": body.remainingAmount
-        },
+        UpdateExpression: updateExpression,
+        ExpressionAttributeValues: updateExpressionValues,
         ReturnValues: "ALL_NEW",
     })
 
     docClient.send(params, (error, result) => {
         if (error) {
+            console.log(error)
             callback(new Error('Couldn\'t update  the item.'))
             return
         }
