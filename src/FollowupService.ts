@@ -13,7 +13,7 @@ function getWhatsAppConfig(data: any) {
         method: 'post',
         url: 'https://graph.facebook.com/v17.0/122103632132007885/messages',
         headers: {
-            'Authorization': 'Bearer EAA0JSqrlV3IBO8BvftXcHSY86jVcxdAEIAV4QOfDK1pDyHyvwwxCeSdee1yG3BYNLDqeoBfzWn0bTwoZB1uQdWFT4tGZCnrjtyuOPXhwCmVIKA6dQA6PygetqmL7XTdJucdPfiXdq9ZAbxVoQOsYeLXTTqfRQMRUfIMGJEYgVjJ0RIxYVZCIKu9myCPBoAE4uslVyIQo90AB7XEGtTIvPul8q9CiDmkEZBiMZD',
+            'Authorization': 'Bearer Invalid',
             'Content-Type': 'application/json'
         },
         data
