@@ -98,8 +98,8 @@ export function getRecords(queryParams: IQueryParams, callback: any) {
                 ":a": !isNaN(queryParams.searchQuery.trim()) ? +queryParams.searchQuery.trim() : -1,
                 ":b": queryParams.searchQuery.trim()
             },
-            ExpressionAttributeNames: { '#mobileNumber': 'mobileNumber', '#ownerName': 'ownerName' },
-            FilterExpression: "#mobileNumber=:a OR contains(#ownerName,:b)"
+            ExpressionAttributeNames: { '#mobileNumber': 'mobileNumber', '#ownerName': 'ownerName', '#petName': 'petName' },
+            FilterExpression: "#mobileNumber=:a OR contains(#ownerName,:b) OR contains(#petName,:b)"
         }),
         ...((queryParams?.cardRecords) && {
             ExpressionAttributeValues: {
@@ -107,10 +107,12 @@ export function getRecords(queryParams: IQueryParams, callback: any) {
                 ":b": queryParams.cardRecords.split(',')[1].trim(),
                 ":c": queryParams.cardRecords.split(',')[2].trim(),
                 ":d": 'Deworming',
-                ":e": 'Vaccination'
+                ":e": 'Vaccination',
+                ':from': '2023-08-05T00:00:00.000Z',
+                ':to': new Date().toISOString()
             },
-            ExpressionAttributeNames: { '#mobileNumber': 'mobileNumber', '#ownerName': 'ownerName', '#petName': 'petName' },
-            FilterExpression: "#mobileNumber=:a AND #ownerName=:b AND #petName=:c AND ( contains(treatment, :d) OR contains(treatment, :e))"
+            ExpressionAttributeNames: { '#mobileNumber': 'mobileNumber', '#ownerName': 'ownerName', '#petName': 'petName', '#timestamp': 'date' },
+            FilterExpression: "#mobileNumber=:a AND #ownerName=:b AND #petName=:c AND ( contains(treatment, :d) OR contains(treatment, :e)) AND (#timestamp BETWEEN :from AND :to)"
         }),
     });
 

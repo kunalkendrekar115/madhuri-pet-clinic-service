@@ -12,8 +12,9 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.363.0",
     "@aws-sdk/lib-dynamodb": "^3.363.0",
-    "axios": "^1.4.0",
+    "axios": "^1.6.7",
     "jsonwebtoken": "^9.0.0",
+    "moment": "^2.30.1",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-aws-documentation": "^1.1.0",
     "serverless-dynamodb-local": "^0.2.40",
@@ -21,7 +22,7 @@
     "uuid": "^9.0.0"
   },
   "scripts": {
-    "start": "serverless offline --stage dev",
+    "start": "serverless offline --stage prod",
     "deploy:prod": "serverless deploy --stage prod",
     "deploy:dev": "serverless deploy --stage dev"
   },

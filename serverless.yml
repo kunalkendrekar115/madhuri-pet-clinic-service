@@ -3,7 +3,7 @@ frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs16.x
   stage: ${env:stage, 'dev'}
   cors: true
   apiGateway:
@@ -142,6 +142,17 @@ functions:
           path: /generate-prescription
           authorizer: custom-authorizer
           method: post
+          cors: true
+          private: true
+  FollowupService:
+    handler: src/FollowupService.handler
+    environment:
+      REGION: ${aws:region}
+    events:
+      - schedule: cron(30 11 ? * * *)
+      - http:
+          path: /followup-service
+          method: get
           cors: true
           private: true
 plugins:
