@@ -159,6 +159,7 @@ plugins:
   - serverless-dynamodb-local
   - serverless-esbuild
   - serverless-offline
+  - serverless-dotenv-plugin
 resources:
   Resources:
     RecordTable:

@@ -13,7 +13,7 @@ function getWhatsAppConfig(data: any) {
         method: 'post',
         url: 'https://graph.facebook.com/v17.0/122103632132007885/messages',
         headers: {
-            'Authorization': 'Bearer Invalid',
+            'Authorization': `Bearer ${process.env.WHATSAPP_TOKEN}`,
             'Content-Type': 'application/json'
         },
         data
@@ -26,7 +26,7 @@ export function sendMessageToSelf(date: any, message: any) {
         try {
             var data = JSON.stringify({
                 "messaging_product": "whatsapp",
-                "to": `918433670541`,
+                "to": `919096591276`,
                 "type": "template",
                 "template": {
                     "name": "followup_reminder_self",
@@ -115,17 +115,19 @@ export function sendWhatsppMessageToClient(record: any) {
 
 export function handler(event: any, context, callback: any) {
 
-    console.log('executed scheduler')
-    const tomorrow = moment().add(1, 'days').format('DD MMM YYYY');
-    // const today = moment().format('YYYY-MM-DD');
+    console.log('executed scheduler.........')
+
+    const tomorrow = moment().add(1, 'days').toISOString();
+    const today = moment().toISOString();
     console.log('tomorrow', tomorrow);
     const params = new ScanCommand({
         TableName: process.env.DYNAMODB_RECORDS_TABLE,
         ExpressionAttributeValues: {
-            ':date': tomorrow,
+            ':from': today,
+            ':to': tomorrow
         },
         ExpressionAttributeNames: { '#followupDate': 'followupDate' },
-        FilterExpression: '(#followupDate=:date)'
+        FilterExpression: '(#followupDate BETWEEN :from AND :to)'
     })
 
     // fetch todo from the database
@@ -139,21 +141,21 @@ export function handler(event: any, context, callback: any) {
 
         let records = result.Items.filter(({ mobileNumber }) => mobileNumber)
 
-        const response = {
-            statusCode: 200,
-            body: JSON.stringify({ records })
-        };
-        callback(null, response);
+        // const response = {
+        //     statusCode: 200,
+        //     body: JSON.stringify({ records })
+        // };
+        // callback(null, response);
 
-        const messagePromises = records.map(sendWhatsppMessageToClient)
+        let messagePromises = records.map(sendWhatsppMessageToClient)
+
+        const messageToSelf = records.reduce((acc: any, curr: any, index) => ([...acc, `${index + 1}) ${curr.ownerName} - ${curr.petName} - ${curr.followupFor} - ${curr.mobileNumber}`]), []).join(', ')
+        messagePromises = messagePromises.concat(sendMessageToSelf(records[0].followupDate, messageToSelf))
 
         Promise.allSettled(messagePromises).then(async (values) => {
             records = records.map((item, index) => ({ ...item, messageStatus: values[index].status }))
+            records = records.concat({ messageToSelf, messageStatus: values[records.length].status })
             console.log(records);
-            const message = records.reduce((acc: any, curr: any) => ([...acc, `${curr.ownerName} - ${curr.petName} - ${curr.followupFor} - ${curr.mobileNumber}`]), []).join('\n')
-
-            const messgeToSelf = await sendMessageToSelf(records[0].followupDate, message);
-            console.log(messgeToSelf);
 
             const response = {
                 statusCode: 200,
